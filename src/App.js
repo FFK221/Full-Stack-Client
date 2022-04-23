@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     //sending a get request to this url
     axios.get("https://full-stack-api-shop.herokuapp.com/auth/login", {headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://endearing-melomakarona-a48dff.netlify.app',
       'Content-Type': 'application/json',
     }}).then((response) => {
           setLoginStatus(response.data.loggedIn)
