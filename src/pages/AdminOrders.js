@@ -79,7 +79,7 @@ const ProductTable = (props) => {
   function updateStatus(data) {
     var answer = window.confirm("Mark this order as fulfilled?");
     if(answer) {
-      axios.post("http://localhost:3001/auth/orderStatus", data).then((response) => {
+      axios.post("https://full-stack-api-shop.herokuapp.com/auth/orderStatus", data).then((response) => {
             console.log(response.data)
             if(response.data == "Success") {
               document.location.reload(true)
@@ -184,7 +184,7 @@ function AdminOrders() {
     function loggout() {
         //Sends a get request to the url and uses the response to redirect to the homepage.
         //go to server/routes/Users.js and locate router.get('/logout', ...etc) to see how it works
-        axios.get("http://localhost:3001/auth/logout").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/logout").then((response) => {
             console.log(response)
             if(response.data == "logout") {
                 navigate("/home")
@@ -194,7 +194,7 @@ function AdminOrders() {
     useEffect(() => {
         
         //Checking to see if user is signed in and if admin, if not, send to /home
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           
             if(response.data.loggedIn == false) {
                 navigate('/home')
@@ -210,11 +210,11 @@ function AdminOrders() {
         //gets lists of both in and out of stock items.
         //will create a different call for this so that 
         //it gets all the items together no matter the stock
-        axios.get("http://localhost:3001/products").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/products").then((response) => {
             setListOfProducts(response.data.productsInStock)
             setlistOutOfStock(response.data.productsOutOfStock)
         })
-        axios.get("http://localhost:3001/auth/getOrders").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/getOrders").then((response) => {
             setOrders(response.data)
             
         })

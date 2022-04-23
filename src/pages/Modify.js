@@ -36,7 +36,7 @@ function Modify() {
     const onSubmit = (data) => {
             data.productPrice = parseFloat(data.productPrice, 10)
             data.productStock = parseInt(data.productStock, 10)
-            axios.post("http://localhost:3001/products/update", {
+            axios.post("https://full-stack-api-shop.herokuapp.com/products/update", {
                 id: id,
                 title: data.title,
                 productDesc: data.productDesc,
@@ -51,7 +51,7 @@ function Modify() {
       };
     useEffect( () => {
         //get request with id variable, go to server/routes/Products.js to follow flow of information
-        axios.get(`http://localhost:3001/products/byId/${id}`).then((response) => {
+        axios.get(`https://full-stack-api-shop.herokuapp.com/products/byId/${id}`).then((response) => {
             //setting response.data(Product loaded by id) to prodObject
             setProductObject(response.data)
             //this is just to see the response of the server for testing purposes. Use inspect on the webpage in your browser to read console log
@@ -59,7 +59,7 @@ function Modify() {
             
         })
         //checking and setting login status. go to server/routes/Users.js to follow flow of information
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
             if(response.data.loggedIn == false) {
                 navigate('/home')
                 window.location.reload(false);

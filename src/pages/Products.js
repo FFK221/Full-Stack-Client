@@ -48,7 +48,7 @@ const useSortableData = (items, config = null) => {
 const ProductTable = (props) => {
   const [loginStatus, setLoginStatus] = useState("")
   const [currentUser, setUser] = useState("")
-  axios.get("http://localhost:3001/auth/login").then((response) => {
+  axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
         //using the response to set both the login status, and user object
         //currently, currentUser is used for nothing
         //loginStatus is used to modify the navbar if user is logged in
@@ -73,7 +73,7 @@ const ProductTable = (props) => {
     if(!loginStatus){
       navigate("/login")
     } else {
-      axios.post("http://localhost:3001/auth/addToCart", data).then((response) => {
+      axios.post("https://full-stack-api-shop.herokuapp.com/auth/addToCart", data).then((response) => {
         if(response.data == "Success"){
           alert("added to cart")
         }
@@ -168,7 +168,7 @@ function Products() {
   //During this post request a session and cookie are created to carry a users information from page to page
   const onSubmit = (data) => {
       console.log("hello")
-      axios.post("http://localhost:3001/products/bySearch", data).then((response) => {
+      axios.post("https://full-stack-api-shop.herokuapp.com/products/bySearch", data).then((response) => {
         
         if(response.data.error){
           alert("item not found")
@@ -181,7 +181,7 @@ function Products() {
     };
     //Getting data of in stock and out of stock items
     useEffect(() => {
-      axios.get("http://localhost:3001/products").then((response) => {
+      axios.get("https://full-stack-api-shop.herokuapp.com/products").then((response) => {
         setListOfProducts(response.data.productsInStock)
         setlistOutOfStock(response.data.productsOutOfStock)
       })
@@ -190,7 +190,7 @@ function Products() {
     //go to server/routes/Users.js and locate router.get('/login', ...etc) to follow flow of data
     useEffect(() => {
       //sending a get request to this url
-      axios.get("http://localhost:3001/auth/login").then((response) => {
+      axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
         //using the response to set both the login status, and user object
         //currently, currentUser is used for nothing
         //loginStatus is used to modify the navbar if user is logged in

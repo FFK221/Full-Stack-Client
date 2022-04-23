@@ -16,14 +16,14 @@ function AdminCoupons() {
     couponAmount: Yup.number().min(0).required(),
   })
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth/createCoupon", data).then((response) => {
+    axios.post("https://full-stack-api-shop.herokuapp.com/auth/createCoupon", data).then((response) => {
       console.log(response.data);
 
     });
     
   };
   const removeCoupon = (data) => {
-    axios.post("http://localhost:3001/auth/removeCoupon", data).then((response) => {
+    axios.post("https://full-stack-api-shop.herokuapp.com/auth/removeCoupon", data).then((response) => {
       console.log(response.data);
 
     });
@@ -35,7 +35,7 @@ function AdminCoupons() {
   function loggout() {
     //Sends a get request to the url and uses the response to redirect to the homepage.
     //go to server/routes/Users.js and locate router.get('/logout', ...etc) to see how it works
-    axios.get("http://localhost:3001/auth/logout").then((response) => {
+    axios.get("https://full-stack-api-shop.herokuapp.com/auth/logout").then((response) => {
         console.log(response)
         if(response.data == "logout") {
             navigate("/home")
@@ -45,7 +45,7 @@ function AdminCoupons() {
   useEffect(() => {
         
     //Checking to see if user is signed in and if admin, if not, send to /home
-    axios.get("http://localhost:3001/auth/login").then((response) => {
+    axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
       
         if(response.data.loggedIn == false) {
             navigate('/home')
@@ -57,7 +57,7 @@ function AdminCoupons() {
             navigate('/home')
             window.location.reload(false);
         }
-        axios.get("http://localhost:3001/auth/getCoupons").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/getCoupons").then((response) => {
           setListOfCoupons(response.data)
         })
     })

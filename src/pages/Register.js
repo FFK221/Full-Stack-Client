@@ -23,7 +23,7 @@ function Register() {
     })
     //when the form is submited a post request is made to Users route using /auth as defined in index.js in the server folder
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/auth", data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/auth", data).then((response) => {
           if(response.data == "Success") {
             navigate("/login")
           }
@@ -33,7 +33,7 @@ function Register() {
         });
       };
       useEffect(() => {
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           if (response.data.loggedIn == true) {
             navigate("/home")
           }

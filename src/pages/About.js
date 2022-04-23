@@ -12,7 +12,7 @@ function About() {
   //go to server/routes/Users.js and locate router.get('/login', ...etc) to follow flow of data
   useEffect(() => {
     //sending a get request to this url
-    axios.get("http://localhost:3001/auth/login").then((response) => {
+    axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
       //using the response to set both the login status, and user object
       //currently, currentUser is used for nothing
       //loginStatus is used to modify the navbar if user is logged in

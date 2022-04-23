@@ -138,7 +138,7 @@ function AdminCustomers() {
     function loggout() {
         //Sends a get request to the url and uses the response to redirect to the homepage.
         //go to server/routes/Users.js and locate router.get('/logout', ...etc) to see how it works
-        axios.get("http://localhost:3001/auth/logout").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/logout").then((response) => {
             console.log(response)
             if(response.data == "logout") {
                 navigate("/home")
@@ -148,7 +148,7 @@ function AdminCustomers() {
     useEffect(() => {
         
         //Checking to see if user is signed in and if admin, if not, send to /home
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           
             if(response.data.loggedIn == false) {
                 navigate('/home')
@@ -164,11 +164,11 @@ function AdminCustomers() {
         //gets lists of both in and out of stock items.
         //will create a different call for this so that 
         //it gets all the items together no matter the stock
-        axios.get("http://localhost:3001/products").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/products").then((response) => {
             setListOfProducts(response.data.productsInStock)
             setlistOutOfStock(response.data.productsOutOfStock)
         })
-        axios.get("http://localhost:3001/auth/getUsers").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/getUsers").then((response) => {
             setListUsers(response.data)
             
         })

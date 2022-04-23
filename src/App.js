@@ -29,7 +29,7 @@ function App() {
   //This is creating a type error currently if you are not signed in becuase it is trying to read data that isnt there, I will fix this soon
   useEffect(() => {
     //sending a get request to this url
-    axios.get("http://localhost:3001/auth/login").then((response) => {
+    axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           setLoginStatus(response.data.loggedIn)
           if(response.data.loggedIn){
             setUser(response.data.user.email)

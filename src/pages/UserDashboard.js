@@ -10,7 +10,7 @@ function UserDashboard() {
     function loggout() {
         //Sends a get request to the url and uses the response to redirect to the homepage.
         //go to server/routes/Users.js and locate router.get('/logout', ...etc) to see how it works
-        axios.get("http://localhost:3001/auth/logout").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/logout").then((response) => {
             console.log(response)
             if(response.data == "logout") {
                 navigate("/home")
@@ -22,7 +22,7 @@ function UserDashboard() {
     useEffect(async () => {
         //sending a get request to this url
         
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           
             if(response.data.loggedIn == false) {
                 navigate('/home')

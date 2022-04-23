@@ -17,14 +17,14 @@ function Product() {
     //The second is made to check the login status of the user.
     useEffect( () => {
         //get request with id variable, go to server/routes/Products.js to follow flow of information
-        axios.get(`http://localhost:3001/products/byId/${id}`).then((response) => {
+        axios.get(`https://full-stack-api-shop.herokuapp.com/products/byId/${id}`).then((response) => {
             //setting response.data(Product loaded by id) to prodObject
             setProductObject(response.data)
             //this is just to see the response of the server for testing purposes. Use inspect on the webpage in your browser to read console log
             console.log(response)
         })
         //checking and setting login status. go to server/routes/Users.js to follow flow of information
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
           setLoginStatus(response.data.loggedIn)
           setUser(response.data.user.id)
         })
@@ -34,7 +34,7 @@ function Product() {
       if(!loginStatus){
         navigate("/login")
       } else {
-        axios.post("http://localhost:3001/auth/addToCart", data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/auth/addToCart", data).then((response) => {
           if(response.data == "Success"){
             alert("added to cart")
           }

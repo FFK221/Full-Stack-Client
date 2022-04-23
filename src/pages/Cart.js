@@ -36,7 +36,7 @@ function Cart() {
       var dataArray = []
       console.log(data)
   
-        axios.post("http://localhost:3001/products/updateStock",listOftest.data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/products/updateStock",listOftest.data).then((response) => {
           if(response.data == "updated"){
 
             for (var i = 0; i < (listOftest.data).length; i++) {
@@ -53,7 +53,7 @@ function Cart() {
             console.log(shippingData)
             console.log(subtotalPrice)
             console.log(currentUser.email)
-            axios.post("http://localhost:3001/auth/placeOrder", {
+            axios.post("https://full-stack-api-shop.herokuapp.com/auth/placeOrder", {
               userId: currentUser.id,
               shippingInfo: shippingData,
               cartInfo: cartData,
@@ -83,10 +83,10 @@ function Cart() {
       const data = {
         userId: 3
       }
-      axios.get("http://localhost:3001/products").then((response) => {
+      axios.get("https://full-stack-api-shop.herokuapp.com/products").then((response) => {
         setListOfProducts(response.data.productsInStock)
         var stocks = response.data.productsInStock
-        axios.get("http://localhost:3001/auth/login").then((response) => {
+        axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
         //If user is not signed in, send /home
         if(response.data.loggedIn == false) {
           navigate('/home')
@@ -101,7 +101,7 @@ function Cart() {
         var productQuan
         axios({
           method: 'post',
-          url: 'http://localhost:3001/auth/getCart',
+          url: 'https://full-stack-api-shop.herokuapp.com/auth/getCart',
           data: {
             id: `${id}`,
           }
@@ -117,7 +117,7 @@ function Cart() {
 
         axios({
           method: 'post',
-          url: 'http://localhost:3001/auth/getCart',
+          url: 'https://full-stack-api-shop.herokuapp.com/auth/getCart',
           data: {
             id: `${id}`,
           }
@@ -169,7 +169,7 @@ function Cart() {
     
     //removes item from cart
     function removeItem(data) {
-      axios.post("http://localhost:3001/auth/removeItem", data).then((response) => {
+      axios.post("https://full-stack-api-shop.herokuapp.com/auth/removeItem", data).then((response) => {
             //console.log(response)
             if(response.data == "Success") {
               document.location.reload(true)
@@ -214,7 +214,7 @@ function Cart() {
       if(appliedCoupon){
         console.log("coupon already applied")
       } else {
-        axios.post("http://localhost:3001/products/checkCoupon", data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/products/checkCoupon", data).then((response) => {
             console.log(response)
             if(response.data[0]) {
               setSubtotalPrice(runningTotal - response.data[0].couponAmount) 

@@ -25,7 +25,7 @@ function Login() {
     const onSubmit = (data) => {
         
       
-        axios.post("http://localhost:3001/auth/login", data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/auth/login", data).then((response) => {
           console.log(response.data);
           if (response.data == "Logged in") {
             window.location.reload(false);
@@ -39,7 +39,7 @@ function Login() {
     //During login, if successful, the page refreshes and this get request is sent.
     //go to server/routes/Users.js to see how it works.
     useEffect(() => {
-      axios.get("http://localhost:3001/auth/login").then((response) => {
+      axios.get("https://full-stack-api-shop.herokuapp.com/auth/login").then((response) => {
         if (response.data.loggedIn == true) {
           navigate("/home")
         }
