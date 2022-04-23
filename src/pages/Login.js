@@ -25,7 +25,7 @@ function Login() {
     const onSubmit = (data) => {
         
       
-        axios.post("https://full-stack-api-shop.herokuapp.com/auth/login", data).then((response) => {
+        axios.post("https://full-stack-api-shop.herokuapp.com/auth/login", data, {withCredentials: true}).then((response) => {
           console.log(response.data);
           if (response.data == "Logged in") {
             window.location.reload(false);
