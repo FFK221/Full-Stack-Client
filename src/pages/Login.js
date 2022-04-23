@@ -27,7 +27,7 @@ function Login() {
       
         axios.post("https://full-stack-api-shop.herokuapp.com/auth/login", data, {withCredentials: true}).then((response) => {
           console.log(response.data);
-          document.cookie = response.data.cookie
+          document.cookie = response.cookie
           if (response.data == "Logged in") {
             window.location.reload(false);
           }
